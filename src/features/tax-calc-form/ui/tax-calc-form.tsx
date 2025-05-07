@@ -21,7 +21,8 @@ export const TaxCalculatorForm = () => {
   });
 
   function onSubmit({ totalTax, taxRate }: z.infer<typeof formSchema>) {
-    setTax(totalTax * (taxRate / 100));
+    const taxSum = totalTax * (taxRate / 100);
+    setTax(taxSum <= 60 ? 60 : taxSum);
   }
 
   return (
